@@ -7,14 +7,13 @@ import NotSupported from "./components/NotSupported";
 
 function App() {
     const [isSupported,setIsSupported]=useState(true)
-    const [screenWidth,setScreenWidth]=useState(screen.width)
     window.onresize=function(){
         screen.width>450?setIsSupported(false):setIsSupported(true)
     }
 
     useEffect(()=>{
         screen.width>450?setIsSupported(false):setIsSupported(true)
-    },[screenWidth])
+    },[screen.width])
   return (
     <>
         {isSupported?(
