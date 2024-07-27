@@ -1,12 +1,8 @@
-import { Scanner } from '@yudiel/react-qr-scanner';
 
 export default function Home(){
     return(
-        <div className="text-white">
-            <Scanner
-                classNames={{container:"my-[25vh]"}} 
-                onScan={(result) => alert(result)} 
-            />
+        <div className="bg-[var(--primary-01)] text-[var(--primary-02)] h-screen">
+            Home
         </div>
     )
 }
