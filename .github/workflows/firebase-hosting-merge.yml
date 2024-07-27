@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secretsFIREBASE_SERVICE_ACCOUNT_KENYA_QR_PAY }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KENYA_QR_PAY }}'
           channelId: live
           projectId: kenya-qr-pay
