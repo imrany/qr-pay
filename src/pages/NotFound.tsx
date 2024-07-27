@@ -1,15 +1,13 @@
 import { useNavigate, Link } from "react-router-dom";
+import { FaTriangleExclamation } from "react-icons/fa6";
 
 export default function NotFound() {
     const navigate=useNavigate()
     return (
-        <div className="flex flex-col h-[100vh] items-center justify-center">
-            <p className="text-3xl font-semibold">404: Page Not Found</p>
-            <p className="text-base my-2">Ooh..! This page is not available.</p>
-            <div className="flex gap-10 mt-4">
-                <Link to="/" className="button bg-[var(--theme-gray)]">Go Home</Link>
-                <button className="button bg-[var(--theme-gray)]" onClick={()=>navigate(-1)}>Go Back</button>
-            </div>
+        <div className="flex flex-col gap-y-2 h-[100vh] bg-[var(--primary-01)] items-center justify-center text-[var(--primary-02)]">
+            <p className="max-md:text-4xl text-6xl font-semibold">Oops.</p>
+            <p className="text-base my-2">The page you're try to reach doesn't exist</p>
+            <button className="flex justify-center items-center rounded-[30px] w-[100px] text-[var(--primary-01)] h-[40px] bg-[var(--button-bg-01)]" onClick={()=>navigate(-1)}>Go Back</button>
         </div>
     );
 };
