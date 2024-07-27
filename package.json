@@ -1,8 +1,11 @@
 {
   "name": "qr-pay",
+  "description": "A qr code payment gateway for retailers",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "author": "imrany",
+  "license": "MPL-2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -13,6 +16,7 @@
     "@yudiel/react-qr-scanner": "^2.0.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.25.1"
   },
   "devDependencies": {
