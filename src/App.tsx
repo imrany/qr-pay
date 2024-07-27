@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Pay from "./pages/Pay";
@@ -6,17 +6,15 @@ import NotFound from "./pages/NotFound";
 import NotSupported from "./components/NotSupported";
 
 function App() {
-    const [isSupported,setIsSupported]=useState(false)
+    const [isSupported,setIsSupported]=useState(true)
+    const [screenWidth,setScreenWidth]=useState(screen.width)
     window.onresize=function(){
-        if(screen.width>425){
-            //not supported
-            setIsSupported(false)
-        }else{
-            //supported
-            setIsSupported(true)
-        }
+        screen.width>450?setIsSupported(false):setIsSupported(true)
     }
 
+    useEffect(()=>{
+        screen.width>450?setIsSupported(false):setIsSupported(true)
+    },[screenWidth])
   return (
     <>
         {isSupported?(
