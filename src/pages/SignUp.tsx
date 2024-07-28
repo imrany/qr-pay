@@ -1,13 +1,14 @@
 import { IoChevronForwardOutline } from "react-icons/io5";
 import InLogo from "../components/InLogo";
-import { useState } from "react"
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context";
 import { Error } from "../components/dialogs";
 import { openDialog } from "../components/actions";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function SignUp(){
-    const API_URL="http://localhost:8000"
+    const { API_URL } = useContext(GlobalContext);
     const [disabled,setDisabled]=useState(false);
     const [error,setError]=useState({
         type:"",
