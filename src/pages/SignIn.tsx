@@ -1,5 +1,5 @@
 import { IoChevronForwardOutline } from "react-icons/io5";
-import QRCode from "../assets/qr-code.png";
+import InLogo from "../components/InLogo";
 import { useState } from "react"
 
 export default function SignIn(){
@@ -33,12 +33,7 @@ export default function SignIn(){
     }
     return(
         <div className="h-screen text-[var(--primary-02)] bg-[var(--primary-01)] flex flex-col justify-center items-center">
-            <div className="flex gap-2 text-4xl items-center text-center font-semibold">
-                <div className="p-[2px] border-[#1A3636] border-dashed border-[1px]">
-                    <img src={QRCode} alt="QR code" width={40} height={10}/>
-                </div>
-                <p>Qr pay</p>
-            </div>
+            <InLogo/>
             <div className="text-[var(--primary-03)] text-center text-base my-2">
                 <p>Pay without limits. Scan to pay</p>
             </div>
