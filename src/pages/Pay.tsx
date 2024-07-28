@@ -1,7 +1,7 @@
 import { Scanner } from '@yudiel/react-qr-scanner';
 
 export default function Pay(){
-    fucntion handleScan(result:any){
+    function handleScan(result:any){
         console.log(result)
     }
     return(
