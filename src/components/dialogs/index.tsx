@@ -32,6 +32,7 @@ export function Error(props:Props){
 
 type DialogProps={
     data:{
+        name:string
    }
 }
 export function Dialog(props:DialogProps){
@@ -42,7 +43,8 @@ export function Dialog(props:DialogProps){
                     <div className="flex ml-auto mb-[8px] justify-end h-[22px] pb-[4px]">
                         <MdClose onClick={()=>toggleDialog(`_dialog`)} className="text-3xl cursor-pointer"/>
                     </div>    
-                    <div className="md:w-[452px] text-base w-[80vw] h-[132px]"> 
+                    <div className="md:w-[452px] text-base w-[80vw] h-[132px]">
+                        {props.data.name}
                     </div>
                 </div>
             </div>

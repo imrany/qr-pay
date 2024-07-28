@@ -2,7 +2,7 @@ import { Scanner } from '@yudiel/react-qr-scanner';
 
 export default function Pay(){
     function handleScan(result:any){
-        result.forEach((i)=>{
+        result.forEach((i:any)=>{
             if(i.format.includes("qr_code")){
                 console.log(i.rawValue)
             }else{

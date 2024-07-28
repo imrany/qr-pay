@@ -14,7 +14,7 @@ export default function SignIn(){
         message:""
     })
 
-    function showErrorDialog(type,message){
+    function showErrorDialog(type:string,message:string){
         setError({
             type,
             message

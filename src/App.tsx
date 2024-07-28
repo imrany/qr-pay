@@ -20,10 +20,16 @@ function App() {
         phoneNumber: 0,
     });
 
-    const access_token: string = localStorage.getItem("access_token");
+    const access_token: any = localStorage.getItem("access_token");
     async function authenticate() {
         try {
             const url=`${API_URL}/api/user/${access_token}`
+            const response=await fetch(url,{
+                method:"GET",
+                headers:{
+                    "authorization":`Bearer ${access_token}`
+                }
+            })
             const parseRes = await response.json();
             if (parseRes.error) {
                 console.log(parseRes.error)
