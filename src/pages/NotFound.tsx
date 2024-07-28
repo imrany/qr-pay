@@ -1,11 +1,11 @@
-import Cactus from "../assets/cactus.png";
+import Not_found from "../assets/404_status.png";
 import { useNavigate } from "react-router-dom";
 
 export default function NotFound() {
     const navigate=useNavigate()
     return (
         <div className="flex flex-col gap-y-2 h-screen bg-[var(--primary-01)] items-center justify-center text-[var(--primary-02)]">
-            <img src={Cactus} className="rounded-[30px]" width={180} height={160} alt="Not supported image"/>
+            <img src={Not_found} className="rounded-[30px]" width={180} height={160} alt="Not supported image"/>
             <div className="text-4xl max-md:text-3xl text-center font-semibold">
                 <p>Oops</p>
                 <p>Page not found</p>
