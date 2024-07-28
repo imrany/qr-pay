@@ -11,7 +11,6 @@
   font-weight: 400;
   scroll-behavior: smooth;
 
-  background: #252525;
   font-size: 15px;
 
   font-synthesis: none;
@@ -25,6 +24,8 @@
  --primary-03:light-dark(#556761,#8da99f);
 
  --button-bg-01:light-dark(#1A3636,#75f5ac);
+  
+ background: var(--primary-01);
 }
 
 .block {display: block;}
