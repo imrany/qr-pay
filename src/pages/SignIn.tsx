@@ -1,10 +1,24 @@
 import { IoChevronForwardOutline } from "react-icons/io5";
 import InLogo from "../components/InLogo";
 import { useState } from "react"
+import { Error } from "../components/dialogs";
+import { openDialog } from "../components/actions"
 
 export default function SignIn(){
     const API_URL="http://localhost:8000"
     const [disabled,setDisabled]=useState(false);
+    const [error,setError]=useState({
+        type:"",
+        message:""
+    })
+
+    function showErrorDialog(type,message){
+        setError({
+            type,
+            message
+        })
+        openDialog("error_dialog")
+    }
 
     async function handleSubmit(e:any){
         try{
@@ -21,6 +35,7 @@ export default function SignIn(){
             if(parseRes.error){
                 setDisabled(false)
                 console.log(parseRes.error)
+                showErrorDialog("Error",parseRes.error)
             }else{
                 console.log(parseRes)
                 setDisabled(false)
@@ -28,6 +43,8 @@ export default function SignIn(){
 
         }catch(error:any){
             setDisabled(false)
+            let errorMessage=error.message.includes("Failed to fetch")?"No connection":error.message
+            showErrorDialog("Error",errorMessage)
             console.log(error.message)
         }
     }
@@ -55,6 +72,7 @@ export default function SignIn(){
                 </button>
 
             </form>
+            <Error data={error}/>
         </div>
     )
 }
