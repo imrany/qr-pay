@@ -35,12 +35,17 @@ export default function SignUp(){
                     setDisabled(false)
                     showErrorDialog("Error","Wrong phone number format")
                 }else{
+                    const date=new Date
+                    const Today=`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+
                     const response=await fetch(`${API_URL}/api/sign_up`,{
                         method:"POST",
                         body:JSON.stringify({
                             username:e.target.username.value,
                             phone_number:e.target.phone_number.value,
-                            password:e.target.confirm_password.value
+                            password:e.target.confirm_password.value,
+                            userPlatform:navigator.userAgentData.platform,
+                            lastLogin:Today
                         })
                     })
                     const parseRes=await response.json()

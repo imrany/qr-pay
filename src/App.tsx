@@ -11,7 +11,7 @@ import NotSupported from "./components/NotSupported";
 import { GlobalContext } from "./context";
 
 function App() {
-    const API_URL = "http://localhost:8000";
+    const API_URL = "https://qr-pay-server.onrender.com";
     const [isLoading,setIsLoading]=useState(true);
     const [isAuth,setIsAuth]=useState(false);
     const [isSupported,setIsSupported]=useState(true);
@@ -21,9 +21,10 @@ function App() {
     });
 
     const access_token: any = localStorage.getItem("access_token");
+    const phone_number:any=localStorage.getItem("phone_number")
     async function authenticate() {
         try {
-            const url=`${API_URL}/api/user/${access_token}`
+            const url=`${API_URL}/api/user/${phone_number}`
             const response=await fetch(url,{
                 method:"GET",
                 headers:{
