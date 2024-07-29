@@ -35,6 +35,7 @@ export default function SignUp(){
                     setDisabled(false)
                     showErrorDialog("Error","Wrong phone number format")
                 }else{
+                    const $navigator:any=navigator;
                     const date=new Date
                     const Today=`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 
@@ -44,7 +45,7 @@ export default function SignUp(){
                             username:e.target.username.value,
                             phone_number:e.target.phone_number.value,
                             password:e.target.confirm_password.value,
-                            userPlatform:navigator.userAgentData.platform,
+                            userPlatform:$navigator.userAgentData.platform,
                             lastLogin:Today
                         })
                     })
