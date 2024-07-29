@@ -39,7 +39,7 @@ export default function SignUp(){
                     const date=new Date
                     const Today=`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 
-                    const response=await fetch(`${API_URL}/api/sign_up`,{
+                    const response=await fetch(`${API_URL}/api/auth/sign_up`,{
                         method:"POST",
                         body:JSON.stringify({
                             username:e.target.username.value,

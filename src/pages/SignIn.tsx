@@ -35,7 +35,7 @@ export default function SignIn(){
                 const date=new Date
                 const Today=`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 
-                const response=await fetch(`${API_URL}/api/sign_in`,{
+                const response=await fetch(`${API_URL}/api/auth/sign_in`,{
                     method:"POST",
                     body:JSON.stringify({
                         phone_number:e.target.phone_number.value,
