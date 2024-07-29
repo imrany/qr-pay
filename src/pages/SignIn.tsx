@@ -35,10 +35,17 @@ export default function SignIn(){
                 const date=new Date
                 const Today=`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 
+                let phone_number:string
+                if(e.target.phone_number.value.slice(0,2)==="07"){
+                    phone_number=`${e.target.phone_number.value.slice(0,2).replace('07','2547')}${e.target.phone_number.value.slice(2,e.target.phone_number.length)}`
+                }else{
+                    phone_number=e.target.phone_number.value
+                }
+
                 const response=await fetch(`${API_URL}/api/auth/sign_in`,{
                     method:"POST",
                     body:JSON.stringify({
-                        phone_number:e.target.phone_number.value,
+                        phone_number:phone_number.length!==12?null:phone_number,
                         password:e.target.password.value,
                         userPlatform:$navigator.userAgentData.platform,
                         lastLogin:Today
