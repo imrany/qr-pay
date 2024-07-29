@@ -9,10 +9,12 @@ import Pay from "./pages/Pay";
 import NotFound from "./pages/NotFound";
 import NotSupported from "./components/NotSupported";
 import { GlobalContext } from "./context";
+import { Error } from "./components/dialogs";
+import { openDialog } from "./components/actions"
 
 function App() {
-    const API_URL = "https://qr-pay-server.onrender.com";
-    //const API_URL = "http://localhost:8080";
+    //const API_URL = "https://qr-pay-server.onrender.com";
+    const API_URL = "http://localhost:8080";
     const [isLoading,setIsLoading]=useState(true);
     const [isAuth,setIsAuth]=useState(false);
     const [isSupported,setIsSupported]=useState(true);
@@ -20,6 +22,18 @@ function App() {
         username: "",
         phoneNumber: 0,
     });
+    const [error,setError]=useState({
+        type:"",
+        message:""
+    })
+
+    function showErrorDialog(type:string,message:string){
+        setError({
+            type,
+            message
+        })
+        openDialog("error_dialog")
+    }
 
     const user_data:any=localStorage.getItem("user_data");
     const $user_data:any=user_data!==null?JSON.parse(user_data):{};
@@ -49,7 +63,9 @@ function App() {
         }catch(error:any){
             setIsAuth(false);
             setIsLoading(false);
-            console.log(error.message)
+            let errorMessage=error.message.includes("Failed to fetch")?"No connection":error.message
+            showErrorDialog("Error",errorMessage)
+            console.log(errorMessage)
         }
     }
 
@@ -92,6 +108,7 @@ function App() {
                 </Routes>
                 )}
             </GlobalContext.Provider>
+            <Error data={error}/>
             </BrowserRouter>
         ):(
             <NotSupported/>    
