@@ -11,7 +11,8 @@ import NotSupported from "./components/NotSupported";
 import { GlobalContext } from "./context";
 
 function App() {
-    const API_URL = "https://qr-pay-server.onrender.com";
+    //const API_URL = "https://qr-pay-server.onrender.com";
+    const API_URL = "http://localhost:8080";
     const [isLoading,setIsLoading]=useState(true);
     const [isAuth,setIsAuth]=useState(false);
     const [isSupported,setIsSupported]=useState(true);
@@ -20,15 +21,15 @@ function App() {
         phoneNumber: 0,
     });
 
-    const access_token: any = localStorage.getItem("access_token");
-    const phone_number:any=localStorage.getItem("phone_number")
+    const user_data:any=localStorage.getItem("user_data");
+    const $user_data:any=user_data!==null?JSON.parse(user_data):{};
     async function authenticate() {
         try {
-            const url=`${API_URL}/api/user/${phone_number}`
+            const url=`${API_URL}/api/users/${$user_data.phoneNumber}`
             const response=await fetch(url,{
                 method:"GET",
                 headers:{
-                    "authorization":`Bearer ${access_token}`
+                    "authorization":`Bearer ${$user_data.accessToken}`
                 }
             })
             const parseRes = await response.json();
@@ -39,10 +40,8 @@ function App() {
             } else {
                 const userData = {
                     username:parseRes.data.username,
-                    phoneNumber:parseRes.data.phone_number,
-                    accessToken:parseRes.data.access_token
+                    phoneNumber:parseRes.data.phone_number
                 }
-                localStorage.setItem("access_token", JSON.stringify(userData.accessToken));
                 setUser(userData);
                 setIsAuth(true);
                 setIsLoading(false);
@@ -60,7 +59,7 @@ function App() {
 
     useEffect(()=>{
         screen.width>450?setIsSupported(false):setIsSupported(true)
-        if (access_token !== null) {
+        if (user_data !== null) {
             authenticate();
         } else {
             setIsAuth(false);
@@ -75,7 +74,7 @@ function App() {
                 {isLoading ? (
                     <div className="fixed top-0 bottom-0 left-0 z-20 right-0 bg-white">
                         <div className="flex flex-col items-center h-[100vh] justify-center">
-                            <p className="text-xl font-semibold text-[var(--primary-01)]">
+                            <p className="text-xl text-[var(--primary-02)] text-[var(--primary-01)]">
                                 Loading...
                             </p>
                         </div>

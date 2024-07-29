@@ -42,16 +42,27 @@ export default function SignIn(){
                         password:e.target.password.value,
                         userPlatform:$navigator.userAgentData.platform,
                         lastLogin:Today
-                    })
+                    }),
+                    headers:{
+                        "content-type":"application/json"
+                    }
                 })
                 const parseRes=await response.json()
+                console.log(parseRes)
                 if(parseRes.error){
                     setDisabled(false)
                     console.log(parseRes.error)
                     showErrorDialog("Error",parseRes.error)
                 }else{
                     console.log(parseRes)
+                    const userData = {
+                        username:parseRes.data.username,
+                        phoneNumber:parseRes.data.phone_number,
+                        accessToken:parseRes.data.access_token
+                    }
+                    localStorage.setItem("user_data", JSON.stringify(userData));
                     setDisabled(false)
+                    window.location.reload()
                 }
             }
         }catch(error:any){

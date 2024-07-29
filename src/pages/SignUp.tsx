@@ -47,7 +47,10 @@ export default function SignUp(){
                             password:e.target.confirm_password.value,
                             userPlatform:$navigator.userAgentData.platform,
                             lastLogin:Today
-                        })
+                        }),
+                        headers:{
+                            "content-type":"application/json"
+                        }
                     })
                     const parseRes=await response.json()
                     if(parseRes.error){
@@ -56,7 +59,14 @@ export default function SignUp(){
                         showErrorDialog("Error",parseRes.error)
                     }else{
                         console.log(parseRes)
+                        const userData = {
+                            username:parseRes.data.username,
+                            phoneNumber:parseRes.data.phone_number,
+                            accessToken:parseRes.data.access_token
+                        }
+                        localStorage.setItem("user_data", JSON.stringify(userData));
                         setDisabled(false)
+                        window.location.reload()
                     }
                  }          
             } 
