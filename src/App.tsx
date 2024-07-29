@@ -13,8 +13,8 @@ import { Error } from "./components/dialogs";
 import { openDialog } from "./components/actions"
 
 function App() {
-    //const API_URL = "https://qr-pay-server.onrender.com";
-    const API_URL = "http://localhost:8080";
+    const API_URL = "https://qr-pay-server.onrender.com";
+    //const API_URL = "http://localhost:8080";
     const [isLoading,setIsLoading]=useState(true);
     const [isAuth,setIsAuth]=useState(false);
     const [isSupported,setIsSupported]=useState(true);
