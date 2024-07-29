@@ -48,7 +48,6 @@ export default function SignIn(){
                     }
                 })
                 const parseRes=await response.json()
-                console.log(parseRes)
                 if(parseRes.error){
                     setDisabled(false)
                     console.log(parseRes.error)
