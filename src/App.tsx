@@ -88,9 +88,9 @@ function App() {
             <BrowserRouter>
             <GlobalContext.Provider value={{ user, API_URL }}>
                 {isLoading ? (
-                    <div className="fixed top-0 bottom-0 left-0 z-20 right-0 bg-white">
+                    <div className="fixed top-0 bottom-0 left-0 z-20 right-0 bg-[var(--primary-01)]">
                         <div className="flex flex-col items-center h-[100vh] justify-center">
-                            <p className="text-xl text-[var(--primary-02)] text-[var(--primary-01)]">
+                            <p className="text-xl text-[var(--primary-02)]">
                                 Loading...
                             </p>
                         </div>
