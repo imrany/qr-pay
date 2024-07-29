@@ -17,7 +17,7 @@ export function Error(props:Props){
                         <FaTriangleExclamation  className="text-red-500 text-3xl"/>
                         <div className=""> 
                             <p className="text-lg font-semibold">{props.data.type}</p>
-                            <p className="max-sm:text-sm">{props.data.message}</p>
+                            <p className="max-sm:text-sm">{props.data.message.length>30?`${props.data.message.slice(0,30)}...`:props.data.message}</p>
                         </div>
                     </div>
 
